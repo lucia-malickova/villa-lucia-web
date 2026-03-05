@@ -1,0 +1,86 @@
+/* app/calendar-custom.css */
+
+/* Celkový kontajner kalendára */
+.react-calendar {
+  width: 100% !important;
+  background: transparent !important;
+  border: none !important;
+  font-family: inherit !important;
+  color: white !important;
+  line-height: 2em;
+}
+
+/* Navigácia (Mesiac a šípky) */
+.react-calendar__navigation {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.react-calendar__navigation button {
+  color: white !important;
+  min-width: 44px;
+  background: none;
+  font-family: serif !important;
+  font-style: italic;
+  font-size: 1.4rem;
+  transition: opacity 0.3s;
+}
+
+.react-calendar__navigation button:enabled:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Názvy dní (Po, Ut...) */
+.react-calendar__month-view__weekdays {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 8px !important; /* Tu bola oprava */
+  letter-spacing: 0.3em;
+  font-weight: bold;
+  opacity: 0.4;
+  padding-bottom: 15px;
+}
+
+/* Jednotlivé políčka s číslami */
+.react-calendar__tile {
+  padding: 1.5em 0.5em !important;
+  background: none;
+  text-align: center;
+  line-height: 1;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.03) !important;
+  transition: all 0.3s;
+}
+
+/* Dnešný deň */
+.react-calendar__tile--now {
+  background: rgba(255, 255, 255, 0.05) !important;
+  font-weight: 900;
+  color: #fff !important;
+}
+
+/* ŠTÝL PRE OBSADENÉ DNI (Vila Lucia Red) */
+.booked-day {
+  background: rgba(127, 29, 29, 0.4) !important; /* Tmavá bordová */
+  color: #fca5a5 !important; /* Jemná ružovo-červená */
+  position: relative;
+  text-decoration: line-through;
+}
+
+.booked-day::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: #ef4444;
+  border-radius: 50%;
+}
+
+/* Skrytie dní z iného mesiaca */
+.react-calendar__month-view__days__day--neighboringMonth {
+  opacity: 0.1;
+}

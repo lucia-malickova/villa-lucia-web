@@ -10,10 +10,14 @@
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",
+    "axios": "^1.13.6",
     "lucide-react": "latest",
     "next": "latest",
+    "node-ical": "^0.25.4",
     "react": "latest",
-    "react-dom": "latest"
+    "react-calendar": "^6.0.0",
+    "react-dom": "latest",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@types/node": "latest",
