@@ -76,10 +76,10 @@ export default function Home() {
           </div>
           <div className="md:col-span-4 space-y-8">
             <h1 className="text-6xl md:text-[90px] font-extralight tracking-tighter leading-[0.85] [text-wrap:balance]">
-              Work <br /> <span className="italic font-serif">In Silence.</span>
+             The Art of <br /> <span className="italic font-serif">Belonging.</span>
             </h1>
             <p className="text-sm md:text-base font-light text-stone-400 leading-relaxed italic border-l border-stone-800 pl-6">
-              "7 minutes from the pulse of historic cafés, yet hidden in a private forest. The ultimate sanctuary for digital nomads."
+              "Whether you come to lead a global company from our private forest office or to rediscover family joy, you’ve found the place where silence speaks and art heals.7 minutes from the pulse of historic cafés, yet hidden in a private forest."
             </p>
           </div>
         </div>
@@ -88,14 +88,6 @@ export default function Home() {
       {/* NEW: ESTATE STATS */}
 <section className="py-20 px-6 border-b border-white/5 bg-[#050505]">
   <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-    <div className="space-y-1">
-      <p className="text-[9px] uppercase tracking-[0.3em] text-stone-400">Layout</p>
-      <p className="text-2xl font-serif text-white">4 Bed • 3 Bath</p>
-    </div>
-    <div className="space-y-1">
-      <p className="text-[9px] uppercase tracking-[0.3em] text-stone-400">Capacity</p>
-      <p className="text-2xl font-serif text-white">8 Guests <span className="text-xs text-stone-400 opacity-60 align-middle ml-1">(Max 14)</span></p>
-    </div>
     <div className="space-y-1">
       <p className="text-[9px] uppercase tracking-[0.3em] text-stone-400">Living Space</p>
       <p className="text-2xl font-serif text-white">200 m²</p>
@@ -106,11 +98,19 @@ export default function Home() {
     </div>
     <div className="space-y-1">
       <p className="text-[9px] uppercase tracking-[0.3em] text-stone-400">Work Setup</p>
-      <p className="text-2xl font-serif text-white">Dedicated Office</p>
+      <p className="text-2xl font-serif text-white">Private Creative Studio</p>
     </div>
     <div className="space-y-1">
       <p className="text-[9px] uppercase tracking-[0.3em] text-stone-400">Connectivity</p>
       <p className="text-2xl font-serif text-white">Optical Fiber</p>
+    </div>
+    <div className="space-y-1">
+      <p className="text-[9px] uppercase tracking-[0.3em] text-stone-400">Layout</p>
+      <p className="text-2xl font-serif text-white">4 Bed • 3 Bath</p>
+    </div>
+    <div className="space-y-1">
+      <p className="text-[9px] uppercase tracking-[0.3em] text-stone-400">Capacity</p>
+      <p className="text-2xl font-serif text-white">8 Guests <span className="text-xs text-stone-400 opacity-60 align-middle ml-1">(Max 14)</span></p>
     </div>
   </div>
 </section>
@@ -121,9 +121,8 @@ export default function Home() {
           <div className="max-w-3xl">
             <h2 className="text-xs tracking-[0.6em] uppercase text-stone-400 mb-6 font-bold">Upper Floor • Private Sanctuary</h2>
             <h3 className="text-5xl md:text-7xl font-serif italic leading-tight">Master Canopy Suite</h3>
-           <p className="text-stone-400 text-lg leading-relaxed mt-6 italic">
-  Beyond the Master Canopy Suite, the upper floor features a **dedicated creative studio** (office) designed for deep work. 
-  Step out onto the terrace to find our **signature indoor swing**, where you can contemplate the Calvary view in total serenity.
+         <p className="text-stone-300 text-xl font-light leading-relaxed italic border-l border-stone-800 pl-8">
+  "Surrender to the embrace of the massive 220x240cm canopy bed. A royal retreat where the morning light filtered through the forest meets the elegance of your private en-suite sanctuary. Here, luxury is felt in the silence."
 </p>
           </div>
           <div className="flex gap-6 overflow-x-auto snap-x no-scrollbar pb-10">
@@ -136,18 +135,38 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. GROUND FLOOR */}
+   {/* 4. GROUND FLOOR */}
       <section className="py-32 px-6 bg-[#0a0a0a] border-y border-white/5">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-24 items-center text-white">
-          <div className="space-y-10">
-             <h2 className="text-xs tracking-[0.6em] uppercase text-stone-400 font-bold">Regeneration • Ground Floor</h2>
-             <h3 className="text-5xl font-serif italic leading-none">Heritage & Sauna</h3>
-             <p className="text-stone-400 leading-relaxed text-lg text-white">40m² Heritage Suite with a private Ayurvedic sauna.</p>
-             <div className="grid grid-cols-2 gap-4 pt-8 text-white">
-                <div className="relative h-64"><Image src="/heritage_collection/hand_painted_bed.jpg" alt="Bed" fill className="object-cover rounded-sm" /></div>
-                <div className="relative h-64"><Image src="/heritage_collection/ayurvedic_sauna.jpg" alt="Sauna" fill className="object-cover rounded-sm" /></div>
-             </div>
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-24 items-start text-white">
+          
+          {/* LAVA STRANA: Nadpisy a Príbehy */}
+          <div className="space-y-12">
+            <div className="space-y-6">
+              <h2 className="text-xs tracking-[0.6em] uppercase text-stone-500 font-bold">The Art of Resting • Across the Villa</h2>
+<h3 className="text-5xl font-serif italic leading-none">Rooms with a Soul</h3>
+              
+              <div className="space-y-8 pt-4">
+              <p className="text-stone-300 text-lg italic leading-relaxed border-l border-stone-800 pl-6">
+  "On the ground floor, discover the Heritage Suite – 40m² of hand-painted history where a master-crafted bed meets the warmth of your private Ayurvedic sauna."
+</p>
+                <p className="text-stone-500 text-sm italic leading-relaxed pl-6">
+  "The journey continues upstairs: find focus in the **Golden Studio** with its dedicated workspace, or drift away in the romantic **Pink Suite** with our signature hand-knitted swing. With 4 bedrooms and 3 bathrooms, there is a sanctuary for everyone – from big families to creative souls on a sabbatical."
+</p>
+              </div>
+            </div>
+
+            {/* Fotky Sauny a Postele pod textom */}
+            <div className="grid grid-cols-2 gap-4 pt-8">
+              <div className="relative h-64 shadow-xl">
+                <Image src="/heritage_collection/hand_painted_bed.jpg" alt="Heritage Bed" fill className="object-cover rounded-sm" />
+              </div>
+              <div className="relative h-64 shadow-xl">
+                <Image src="/heritage_collection/ayurvedic_sauna.jpg" alt="Ayurvedic Sauna" fill className="object-cover rounded-sm" />
+              </div>
+            </div>
           </div>
+
+          {/* PRAVA STRANA: Galéria 5 fotiek (Už bez textov, čistá) */}
           <div className="flex gap-4 overflow-x-auto md:grid md:grid-cols-2 snap-x no-scrollbar">
              {["pink_bedroom", "gold_bedroom", "bath_tub", "bathroom_heritage", "bathroom_floor"].map((img) => (
                <div key={img} className="relative h-[60vh] min-w-[70vw] md:min-w-0 snap-center shadow-lg">
@@ -155,6 +174,7 @@ export default function Home() {
                </div>
              ))}
           </div>
+
         </div>
       </section>
 
@@ -169,7 +189,7 @@ export default function Home() {
         <p className="text-xl text-stone-700 font-light italic leading-relaxed">
           From the **fully equipped gourmet kitchen** with Smeg appliances, 
           to the masterfully designed living room and U-shaped sitting area. 
-          Every space is crafted for deep comfort and stays of weeks or months.
+          Step into a living gallery. Every piece of furniture, from the massive U-shaped dining table to the legendary carved mirrors, was born under the chisels of master artists. Fully equipped for stays where you only need to bring your soul.
         </p>
       </div>
       <div className="relative aspect-[3/4] md:h-[80vh] shadow-[40px_40px_80px_rgba(0,0,0,0.1)] rounded-sm overflow-hidden text-black">
@@ -181,8 +201,9 @@ export default function Home() {
     <div className="flex gap-4 overflow-x-auto snap-x no-scrollbar pb-10 text-black">
       {[
           // --- Fotky Obývačky (Viac fotiek!) ---
+       "/living/living_hall",
         "/living/living_fireplace",
-        "/living/living_hall",
+        "/living/mirror",
         "/living/living_place",
         "/living/livingroom",
         "/living/masterpiece_of_artistic_woodcarver",
@@ -211,7 +232,10 @@ export default function Home() {
             <Image src="/outdoor/fireplace_outdoor.jpg" alt="Gazebo" fill className="object-cover rounded-sm" />
           </div>
           <div className="md:col-span-4 space-y-8">
-            <h2 className="text-5xl font-serif italic leading-tight">60m² Heated <br /> Gazebo</h2>
+            <h2 className="text-5xl font-serif italic leading-tight">Heated <br /> Cinematic Gazebo</h2>
+            <p className="text-stone-400 italic leading-relaxed mt-6">
+  "Imagine a winter night. A crackling fire in the outdoor stone fireplace, lounging on a medieval heated bench, while a movie plays on the projection screen. 60m² of pure bliss for long dinners or karaoke nights with our JBL setup."
+</p>
             <div className="flex gap-4 overflow-x-auto snap-x no-scrollbar pb-2">
               {["dining_outdoor", "view_gazebo", "gazebo", "grill"].map((img) => (
                 <div key={img} className="relative h-48 min-w-[150px] snap-center shrink-0">
@@ -228,6 +252,23 @@ export default function Home() {
       </div>
       </div>
       </section>
+
+      {/* FOTKA VILY - EXTERIÉR */}
+<section className="py-20 px-6 bg-[#050505]">
+  <div className="max-w-7xl mx-auto">
+    <div className="relative aspect-[16/9] md:h-[70vh] overflow-hidden rounded-sm shadow-2xl">
+      <Image 
+        src="/villa.jpg" 
+        alt="Villa Lucia Exterior" 
+        fill 
+        className="object-cover brightness-90" 
+      />
+      <div className="absolute bottom-10 left-10">
+        <span className="text-[10px] tracking-[0.5em] uppercase text-white/40 font-bold">The Sanctuary Exterior</span>
+      </div>
+    </div>
+  </div>
+</section>
 
      {/* 7. AVAILABILITY & INQUIRY SECTION */}
 <section id="reserve" className="py-32 px-6 bg-[#080808] border-t border-white/5">
