@@ -226,6 +226,7 @@ export default function Home() {
               ))}
             </div>
         </div>
+      </div>
       </section>
 
      {/* 7. AVAILABILITY & INQUIRY SECTION */}
