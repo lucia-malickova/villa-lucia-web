@@ -25,12 +25,8 @@
     "@types/react-dom": "latest",
     "autoprefixer": "latest",
     "postcss": "latest",
+    "@tailwindcss/postcss": "latest",
     "tailwindcss": "latest",
     "typescript": "latest"
-  },
-  "browserslist": [
-    "defaults",
-    "not ie 11",
-    "not op_mini all"
-  ]
+  }
 }

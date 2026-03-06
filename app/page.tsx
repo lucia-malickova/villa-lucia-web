@@ -8,7 +8,7 @@ import 'react-calendar/dist/Calendar.css';
 import './calendar-custom.css'; 
 
 export default function Home() {
-  const [data, setData] = useState({ reservations: [], bookedDates: [] });
+  const [data, setData] = useState<{ reservations: any[]; bookedDates: string[] }>({ reservations: [], bookedDates: [] });
   const [loading, setLoading] = useState(true);
 
   const API_URL = 'https://booking-system-awps.onrender.com/public/reservations';
@@ -225,7 +225,7 @@ export default function Home() {
                 </div>
               ))}
             </div>
-        </div>
+      </div>
       </div>
       </section>
 
