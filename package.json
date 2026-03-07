@@ -30,8 +30,10 @@
     "typescript": "latest"
   },
   "browserslist": [
-    "defaults",
-    "not ie 11",
-    "not op_mini all"
+    "chrome >= 80",
+    "firefox >= 78",
+    "safari >= 14",
+    "edge >= 80",
+    "ios >= 14"
   ]
 }

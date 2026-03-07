@@ -80,6 +80,12 @@
   border-radius: 50%;
 }
 
+/* Oprava kontrastu pre čísla dní (Google Lighthouse fix) */
+.react-calendar__tile abbr {
+  color: #e7e5e4 !important; /* stone-200 - vysoký kontrast */
+  text-decoration: none !important;
+}
+
 /* Skrytie dní z iného mesiaca */
 .react-calendar__month-view__days__day--neighboringMonth {
   opacity: 0.1;
