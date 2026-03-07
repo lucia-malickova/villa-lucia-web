@@ -1,12 +1,18 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
+import dynamic from 'next/dynamic';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { Analytics } from "@vercel/analytics/react";
-import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './calendar-custom.css'; 
+
+// Lazy load Kalendára - načíta sa až keď je potrebný, neblokuje úvodné vykreslenie
+const Calendar = dynamic(() => import('react-calendar'), { 
+  ssr: false,
+  loading: () => <div className="h-64 w-full flex items-center justify-center text-stone-500 text-xs tracking-widest uppercase animate-pulse">Loading Sanctuary Calendar...</div>
+});
 
 function Gallery({ children, className, arrowColor = "white", desktopArrows = true }: { children: React.ReactNode, className?: string, arrowColor?: "white" | "black", desktopArrows?: boolean }) {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -171,7 +177,7 @@ export default function Home() {
           <Gallery className="flex gap-6 overflow-x-auto snap-x no-scrollbar pb-10">
             {["master_bedroom", "master_bed", "master_bedroom_bed", "master_bathroom", "master_shower"].map((img) => (
               <div key={img} className="relative h-[75vh] min-w-[85vw] md:min-w-[50vw] snap-center shadow-2xl bg-stone-900">
-                <Image src={`/master-sanctuary/${img}.jpg`} alt={img} fill className="object-cover rounded-sm" sizes="(max-width: 768px) 85vw, 50vw" quality={60} />
+                <Image src={`/master-sanctuary/${img}.jpg`} alt={img} fill className="object-cover rounded-sm" sizes="(max-width: 768px) 85vw, 50vw" quality={50} />
               </div>
             ))}
           </Gallery>
@@ -202,10 +208,10 @@ export default function Home() {
             {/* Fotky Sauny a Postele pod textom */}
             <div className="grid grid-cols-2 gap-4 pt-8">
               <div className="relative h-64 shadow-xl">
-                <Image src="/heritage_collection/hand_painted_bed.jpg" alt="Heritage Bed" fill className="object-cover rounded-sm" sizes="(max-width: 768px) 45vw, 20vw" quality={60} />
+                <Image src="/heritage_collection/hand_painted_bed.jpg" alt="Heritage Bed" fill className="object-cover rounded-sm" sizes="(max-width: 768px) 45vw, 20vw" quality={50} />
               </div>
               <div className="relative h-64 shadow-xl">
-                <Image src="/heritage_collection/ayurvedic_sauna.jpg" alt="Ayurvedic Sauna" fill className="object-cover rounded-sm" sizes="(max-width: 768px) 45vw, 20vw" quality={60} />
+                <Image src="/heritage_collection/ayurvedic_sauna.jpg" alt="Ayurvedic Sauna" fill className="object-cover rounded-sm" sizes="(max-width: 768px) 45vw, 20vw" quality={50} />
               </div>
             </div>
           </div>
@@ -214,7 +220,7 @@ export default function Home() {
           <Gallery className="flex gap-4 overflow-x-auto md:grid md:grid-cols-2 snap-x no-scrollbar" desktopArrows={false}>
              {["pink_bedroom", "gold_bedroom", "bath_tub", "bathroom_heritage", "bathroom_floor"].map((img) => (
                <div key={img} className="relative h-[60vh] min-w-[70vw] md:min-w-0 snap-center shadow-lg">
-                 <Image src={`/heritage_collection/${img}.jpg`} alt={img} fill className="object-cover rounded-sm" sizes="(max-width: 768px) 70vw, 50vw" quality={60} />
+                 <Image src={`/heritage_collection/${img}.jpg`} alt={img} fill className="object-cover rounded-sm" sizes="(max-width: 768px) 70vw, 50vw" quality={50} />
                </div>
              ))}
           </Gallery>
@@ -237,7 +243,7 @@ export default function Home() {
         </p>
       </div>
       <div className="relative aspect-[3/4] md:h-[80vh] shadow-[40px_40px_80px_rgba(0,0,0,0.1)] rounded-sm overflow-hidden text-black">
-        <Image src="/kitchen/smeg_coffee_machine.jpg" alt="Kitchen Smeg" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" quality={60} />
+        <Image src="/kitchen/smeg_coffee_machine.jpg" alt="Kitchen Smeg" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" quality={50} />
       </div>
     </div>
 
@@ -262,7 +268,7 @@ export default function Home() {
         "/kitchen/cooking_place",
       ].map((img) => (
         <div key={img} className="relative h-[65vh] min-w-[85vw] md:min-w-[40vw] snap-center shadow-xl bg-stone-100 shrink-0">
-          <Image src={`${img}.jpg`} alt="Villa Lucia Interior" fill className="object-cover rounded-sm" sizes="(max-width: 768px) 85vw, 40vw" quality={60} />
+          <Image src={`${img}.jpg`} alt="Villa Lucia Interior" fill className="object-cover rounded-sm" sizes="(max-width: 768px) 85vw, 40vw" quality={50} />
         </div>
       ))}
     </Gallery>
@@ -274,7 +280,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-center text-white">
           {/* ZMENA: aspect-[4/3] pre mobil (zobrazí celú fotku), min-w-0 (zabráni roztiahnutiu) */}
           <div className="md:col-span-8 relative aspect-[4/3] md:aspect-auto md:h-[80vh] shadow-2xl bg-stone-900 w-full min-w-0">
-            <Image src="/outdoor/fireplace_outdoor.jpg" alt="Gazebo" fill className="object-cover rounded-sm" sizes="(max-width: 768px) 100vw, 66vw" quality={60} />
+            <Image src="/outdoor/fireplace_outdoor.jpg" alt="Gazebo" fill className="object-cover rounded-sm" sizes="(max-width: 768px) 100vw, 66vw" quality={50} />
           </div>
           {/* ZMENA: min-w-0 pre textový kontajner (kľúčové pre opravu orezaného textu a scrollovania) */}
           <div className="md:col-span-4 space-y-8 min-w-0">
@@ -292,7 +298,7 @@ export default function Home() {
                     fill 
                     className="object-cover rounded-sm" 
                     sizes="(max-width: 768px) 150px, 20vw"
-                    quality={60}
+                    quality={50}
                   />
                 </div>
               ))}
@@ -311,7 +317,7 @@ export default function Home() {
         fill 
         className="object-cover brightness-90"
         sizes="100vw" 
-        quality={70}
+        quality={60}
       />
       <div className="absolute bottom-10 left-10">
         <span className="text-[10px] tracking-[0.5em] uppercase text-white/40 font-bold">The Sanctuary Exterior</span>
@@ -445,7 +451,7 @@ export default function Home() {
       <footer className="py-20 bg-black text-center text-white border-t border-white/5">
         <div className="max-w-7xl mx-auto px-6 mb-16">
           <div className="aspect-[1438/960] relative w-full shadow-2xl rounded-sm overflow-hidden">
-            <Image src="/stiavnica_inversion.jpg" alt="Inversion" fill className="object-contain" sizes="(max-width: 768px) 100vw, 1280px" quality={60} />
+            <Image src="/stiavnica_inversion.jpg" alt="Inversion" fill className="object-contain" sizes="(max-width: 768px) 100vw, 1280px" quality={50} />
           </div>
         </div>
         
