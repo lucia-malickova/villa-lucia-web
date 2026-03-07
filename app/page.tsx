@@ -26,7 +26,8 @@ function Gallery({ children, className, arrowColor = "white", desktopArrows = tr
     : "border-black/10 bg-white/60 text-black hover:bg-black hover:text-white";
 
   return (
-    <div className="relative group">
+    // PRIDANÉ: w-full min-w-0 (Toto opraví problém s rozťahovaním a nemožnosťou listovať na mobile)
+    <div className="relative group w-full min-w-0">
       <button 
         onClick={() => scroll('left')} 
         className={`${btnBase} ${btnColor} left-4 hidden md:flex ${desktopArrows ? 'md:opacity-0 md:group-hover:opacity-100' : 'md:hidden'}`} 
@@ -179,7 +180,8 @@ export default function Home() {
 
    {/* 4. GROUND FLOOR */}
       <section className="py-32 px-6 bg-[#0a0a0a] border-y border-white/5">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-24 items-start text-white">
+        {/* ZMENA: gap-12 pre mobil, gap-24 pre desktop */}
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-24 items-center text-white">
           
           {/* LAVA STRANA: Nadpisy a Príbehy */}
           <div className="space-y-12">
@@ -270,11 +272,13 @@ export default function Home() {
       {/* 6. GAZEBO */}
       <section className="py-32 px-6">
         <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-center text-white">
-          <div className="md:col-span-8 relative h-[80vh] shadow-2xl bg-stone-900">
+          {/* ZMENA: h-[50vh] pre mobil, h-[80vh] pre desktop */}
+          <div className="md:col-span-8 relative h-[50vh] md:h-[80vh] shadow-2xl bg-stone-900">
             <Image src="/outdoor/fireplace_outdoor.jpg" alt="Gazebo" fill className="object-cover rounded-sm" sizes="(max-width: 768px) 100vw, 66vw" />
           </div>
           <div className="md:col-span-4 space-y-8">
-            <h2 className="text-5xl font-serif italic leading-tight">Heated <br /> Cinematic Gazebo</h2>
+            {/* PRIDANÉ: [text-wrap:balance] pre krajšie zalomenie nadpisu */}
+            <h2 className="text-5xl font-serif italic leading-tight [text-wrap:balance]">Heated <br /> Cinematic Gazebo</h2>
             <p className="text-stone-400 italic leading-relaxed mt-6">
   "Imagine a winter night. A crackling fire in the outdoor stone fireplace, lounging on a medieval heated bench, while a movie plays on the projection screen. 60m² of pure bliss for long dinners or karaoke nights with our JBL setup."
 </p>
