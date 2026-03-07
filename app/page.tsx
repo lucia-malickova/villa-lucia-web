@@ -1,11 +1,53 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { Analytics } from "@vercel/analytics/react";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './calendar-custom.css'; 
+
+function Gallery({ children, className, arrowColor = "white", desktopArrows = true }: { children: React.ReactNode, className?: string, arrowColor?: "white" | "black", desktopArrows?: boolean }) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollRef.current) {
+      const scrollAmount = scrollRef.current.clientWidth * 0.6;
+      scrollRef.current.scrollBy({ left: direction === 'right' ? scrollAmount : -scrollAmount, behavior: 'smooth' });
+    }
+  };
+
+  const isWhite = arrowColor === "white";
+  // Zvýšený z-index, väčší padding a cursor-pointer
+  const btnBase = "absolute top-1/2 -translate-y-1/2 z-30 p-3 rounded-full border backdrop-blur-md transition-all duration-500 flex items-center justify-center shadow-lg active:scale-95 cursor-pointer";
+  const btnColor = isWhite 
+    ? "border-white/30 bg-black/30 text-white hover:bg-white hover:text-black" 
+    : "border-black/10 bg-white/60 text-black hover:bg-black hover:text-white";
+
+  return (
+    <div className="relative group">
+      <button 
+        onClick={() => scroll('left')} 
+        className={`${btnBase} ${btnColor} left-4 hidden md:flex ${desktopArrows ? 'md:opacity-0 md:group-hover:opacity-100' : 'md:hidden'}`} 
+        aria-label="Scroll Left"
+      >
+        <ChevronLeft className="w-6 h-6" />
+      </button>
+      <button 
+        onClick={() => scroll('right')} 
+        // Pridané 'flex' aby bola na mobile vždy viditeľná
+        className={`${btnBase} ${btnColor} right-4 flex ${desktopArrows ? 'md:opacity-0 md:group-hover:opacity-100' : 'md:hidden'}`} 
+        aria-label="Scroll Right"
+      >
+        <ChevronRight className="w-6 h-6" />
+      </button>
+      <div ref={scrollRef} className={className}>
+        {children}
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
   const [data, setData] = useState<{ reservations: any[]; bookedDates: string[] }>({ reservations: [], bookedDates: [] });
@@ -89,28 +131,28 @@ export default function Home() {
 <section className="py-20 px-6 border-b border-white/5 bg-[#050505]">
   <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
     <div className="space-y-1">
-      <p className="text-[9px] uppercase tracking-[0.3em] text-stone-400">Living Space</p>
+      <p className="text-[9px] uppercase tracking-[0.3em] text-stone-300">Living Space</p>
       <p className="text-2xl font-serif text-white">200 m²</p>
     </div>
     <div className="space-y-1">
-      <p className="text-[9px] uppercase tracking-[0.3em] text-stone-400">Private Land</p>
+      <p className="text-[9px] uppercase tracking-[0.3em] text-stone-300">Private Land</p>
       <p className="text-2xl font-serif text-white">1000 m²</p>
     </div>
     <div className="space-y-1">
-      <p className="text-[9px] uppercase tracking-[0.3em] text-stone-400">Work Setup</p>
+      <p className="text-[9px] uppercase tracking-[0.3em] text-stone-300">Work Setup</p>
       <p className="text-2xl font-serif text-white">Private Creative Studio</p>
     </div>
     <div className="space-y-1">
-      <p className="text-[9px] uppercase tracking-[0.3em] text-stone-400">Connectivity</p>
+      <p className="text-[9px] uppercase tracking-[0.3em] text-stone-300">Connectivity</p>
       <p className="text-2xl font-serif text-white">Optical Fiber</p>
     </div>
     <div className="space-y-1">
-      <p className="text-[9px] uppercase tracking-[0.3em] text-stone-400">Layout</p>
+      <p className="text-[9px] uppercase tracking-[0.3em] text-stone-300">Layout</p>
       <p className="text-2xl font-serif text-white">4 Bed • 3 Bath</p>
     </div>
     <div className="space-y-1">
-      <p className="text-[9px] uppercase tracking-[0.3em] text-stone-400">Capacity</p>
-      <p className="text-2xl font-serif text-white">8 Guests <span className="text-xs text-stone-400 opacity-60 align-middle ml-1">(Max 14)</span></p>
+      <p className="text-[9px] uppercase tracking-[0.3em] text-stone-300">Capacity</p>
+      <p className="text-2xl font-serif text-white">8 Guests <span className="text-xs text-stone-300 align-middle ml-1">(Max 14)</span></p>
     </div>
   </div>
 </section>
@@ -119,19 +161,19 @@ export default function Home() {
       <section className="py-32 px-6 border-t border-white/5">
         <div className="max-w-7xl mx-auto space-y-16 text-white">
           <div className="max-w-3xl">
-            <h2 className="text-xs tracking-[0.6em] uppercase text-stone-400 mb-6 font-bold">Upper Floor • Private Sanctuary</h2>
+            <h2 className="text-xs tracking-[0.6em] uppercase text-stone-300 mb-6 font-bold">Upper Floor • Private Sanctuary</h2>
             <h3 className="text-5xl md:text-7xl font-serif italic leading-tight">Master Canopy Suite</h3>
          <p className="text-stone-300 text-xl font-light leading-relaxed italic border-l border-stone-800 pl-8">
   "Surrender to the embrace of the massive 220x240cm canopy bed. A royal retreat where the morning light filtered through the forest meets the elegance of your private en-suite sanctuary. Here, luxury is felt in the silence."
 </p>
           </div>
-          <div className="flex gap-6 overflow-x-auto snap-x no-scrollbar pb-10">
+          <Gallery className="flex gap-6 overflow-x-auto snap-x no-scrollbar pb-10">
             {["master_bedroom", "master_bed", "master_bedroom_bed", "master_bathroom", "master_shower"].map((img) => (
               <div key={img} className="relative h-[75vh] min-w-[85vw] md:min-w-[50vw] snap-center shadow-2xl bg-stone-900">
-                <Image src={`/master-sanctuary/${img}.jpg`} alt={img} fill className="object-cover rounded-sm" />
+                <Image src={`/master-sanctuary/${img}.jpg`} alt={img} fill className="object-cover rounded-sm" sizes="(max-width: 768px) 85vw, 50vw" />
               </div>
             ))}
-          </div>
+          </Gallery>
         </div>
       </section>
 
@@ -142,14 +184,14 @@ export default function Home() {
           {/* LAVA STRANA: Nadpisy a Príbehy */}
           <div className="space-y-12">
             <div className="space-y-6">
-              <h2 className="text-xs tracking-[0.6em] uppercase text-stone-500 font-bold">The Art of Resting • Across the Villa</h2>
+              <h2 className="text-xs tracking-[0.6em] uppercase text-stone-300 font-bold">The Art of Resting • Across the Villa</h2>
 <h3 className="text-5xl font-serif italic leading-none">Rooms with a Soul</h3>
               
               <div className="space-y-8 pt-4">
               <p className="text-stone-300 text-lg italic leading-relaxed border-l border-stone-800 pl-6">
   "On the ground floor, discover the Heritage Suite – 40m² of hand-painted history where a master-crafted bed meets the warmth of your private Ayurvedic sauna."
 </p>
-                <p className="text-stone-500 text-sm italic leading-relaxed pl-6">
+                <p className="text-stone-400 text-sm italic leading-relaxed pl-6">
   "The journey continues upstairs: find focus in the **Golden Studio** with its dedicated workspace, or drift away in the romantic **Pink Suite** with our signature hand-knitted swing. With 4 bedrooms and 3 bathrooms, there is a sanctuary for everyone – from big families to creative souls on a sabbatical."
 </p>
               </div>
@@ -158,22 +200,22 @@ export default function Home() {
             {/* Fotky Sauny a Postele pod textom */}
             <div className="grid grid-cols-2 gap-4 pt-8">
               <div className="relative h-64 shadow-xl">
-                <Image src="/heritage_collection/hand_painted_bed.jpg" alt="Heritage Bed" fill className="object-cover rounded-sm" />
+                <Image src="/heritage_collection/hand_painted_bed.jpg" alt="Heritage Bed" fill className="object-cover rounded-sm" sizes="(max-width: 768px) 45vw, 20vw" />
               </div>
               <div className="relative h-64 shadow-xl">
-                <Image src="/heritage_collection/ayurvedic_sauna.jpg" alt="Ayurvedic Sauna" fill className="object-cover rounded-sm" />
+                <Image src="/heritage_collection/ayurvedic_sauna.jpg" alt="Ayurvedic Sauna" fill className="object-cover rounded-sm" sizes="(max-width: 768px) 45vw, 20vw" />
               </div>
             </div>
           </div>
 
           {/* PRAVA STRANA: Galéria 5 fotiek (Už bez textov, čistá) */}
-          <div className="flex gap-4 overflow-x-auto md:grid md:grid-cols-2 snap-x no-scrollbar">
+          <Gallery className="flex gap-4 overflow-x-auto md:grid md:grid-cols-2 snap-x no-scrollbar" desktopArrows={false}>
              {["pink_bedroom", "gold_bedroom", "bath_tub", "bathroom_heritage", "bathroom_floor"].map((img) => (
                <div key={img} className="relative h-[60vh] min-w-[70vw] md:min-w-0 snap-center shadow-lg">
-                 <Image src={`/heritage_collection/${img}.jpg`} alt={img} fill className="object-cover rounded-sm" />
+                 <Image src={`/heritage_collection/${img}.jpg`} alt={img} fill className="object-cover rounded-sm" sizes="(max-width: 768px) 70vw, 50vw" />
                </div>
              ))}
-          </div>
+          </Gallery>
 
         </div>
       </section>
@@ -193,12 +235,12 @@ export default function Home() {
         </p>
       </div>
       <div className="relative aspect-[3/4] md:h-[80vh] shadow-[40px_40px_80px_rgba(0,0,0,0.1)] rounded-sm overflow-hidden text-black">
-        <Image src="/kitchen/smeg_coffee_machine.jpg" alt="Kitchen Smeg" fill className="object-cover" />
+        <Image src="/kitchen/smeg_coffee_machine.jpg" alt="Kitchen Smeg" fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
       </div>
     </div>
 
     {/* HORIZONTÁLNE GALÉRIE (Tu pridávame nové fotky) */}
-    <div className="flex gap-4 overflow-x-auto snap-x no-scrollbar pb-10 text-black">
+    <Gallery className="flex gap-4 overflow-x-auto snap-x no-scrollbar pb-10 text-black" arrowColor="black">
       {[
           // --- Fotky Obývačky (Viac fotiek!) ---
        "/living/living_hall",
@@ -218,10 +260,10 @@ export default function Home() {
         "/kitchen/cooking_place",
       ].map((img) => (
         <div key={img} className="relative h-[65vh] min-w-[85vw] md:min-w-[40vw] snap-center shadow-xl bg-stone-100 shrink-0">
-          <Image src={`${img}.jpg`} alt="Villa Lucia Interior" fill className="object-cover rounded-sm" />
+          <Image src={`${img}.jpg`} alt="Villa Lucia Interior" fill className="object-cover rounded-sm" sizes="(max-width: 768px) 85vw, 40vw" />
         </div>
       ))}
-    </div>
+    </Gallery>
   </div>
 </section>
 
@@ -229,14 +271,14 @@ export default function Home() {
       <section className="py-32 px-6">
         <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-center text-white">
           <div className="md:col-span-8 relative h-[80vh] shadow-2xl bg-stone-900">
-            <Image src="/outdoor/fireplace_outdoor.jpg" alt="Gazebo" fill className="object-cover rounded-sm" />
+            <Image src="/outdoor/fireplace_outdoor.jpg" alt="Gazebo" fill className="object-cover rounded-sm" sizes="(max-width: 768px) 100vw, 66vw" />
           </div>
           <div className="md:col-span-4 space-y-8">
             <h2 className="text-5xl font-serif italic leading-tight">Heated <br /> Cinematic Gazebo</h2>
             <p className="text-stone-400 italic leading-relaxed mt-6">
   "Imagine a winter night. A crackling fire in the outdoor stone fireplace, lounging on a medieval heated bench, while a movie plays on the projection screen. 60m² of pure bliss for long dinners or karaoke nights with our JBL setup."
 </p>
-            <div className="flex gap-4 overflow-x-auto snap-x no-scrollbar pb-2">
+            <Gallery className="flex gap-4 overflow-x-auto snap-x no-scrollbar pb-2">
               {["dining_outdoor", "view_gazebo", "gazebo", "grill"].map((img) => (
                 <div key={img} className="relative h-48 min-w-[150px] snap-center shrink-0">
                   <Image 
@@ -248,7 +290,7 @@ export default function Home() {
                   />
                 </div>
               ))}
-            </div>
+            </Gallery>
       </div>
       </div>
       </section>
@@ -261,7 +303,8 @@ export default function Home() {
         src="/villa.jpg" 
         alt="Villa Lucia Exterior" 
         fill 
-        className="object-cover brightness-90" 
+        className="object-cover brightness-90"
+        sizes="100vw" 
       />
       <div className="absolute bottom-10 left-10">
         <span className="text-[10px] tracking-[0.5em] uppercase text-white/40 font-bold">The Sanctuary Exterior</span>
@@ -277,29 +320,29 @@ export default function Home() {
     {/* A. RATES - Elegantné ceny na stred */}
     <div className="space-y-12">
       <div className="text-center space-y-4">
-        <h2 className="text-xs tracking-[0.6em] uppercase text-stone-400 font-bold">Rates & Terms</h2>
+        <h2 className="text-xs tracking-[0.6em] uppercase text-stone-300 font-bold">Rates & Terms</h2>
         <p className="text-4xl md:text-5xl font-serif italic text-white">Choose your sanctuary stay.</p>
       </div>
 
       <div className="flex flex-col md:flex-row justify-between items-center gap-10 py-12 border-y border-white/5">
         <div className="text-center md:text-left space-y-2">
-          <p className="text-[8px] uppercase tracking-[0.4em] text-stone-400 font-bold">Short Stay</p>
-          <p className="text-2xl font-serif italic text-stone-200">from 300€ <span className="text-[10px] opacity-60 not-italic">/ night</span></p>
+          <p className="text-[8px] uppercase tracking-[0.4em] text-stone-300 font-bold">Short Stay</p>
+          <p className="text-2xl font-serif italic text-stone-200">from 300€ <span className="text-[10px] opacity-80 not-italic">/ night</span></p>
         </div>
 
         <div className="hidden md:block w-px h-10 bg-white/5"></div>
 
         <div className="text-center space-y-2 relative">
-          <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-full text-[7px] tracking-[0.3em] uppercase text-stone-400 italic">Recommended for deep work</div>
-          <p className="text-[8px] uppercase tracking-[0.4em] text-stone-400 font-bold text-white">Weekly Retreat</p>
-          <p className="text-2xl font-serif italic text-white font-medium">from 1000€ <span className="text-[10px] opacity-60 not-italic">/ week</span></p>
+          <div className="absolute -top-6 left-1/2 -translate-x-1/2 w-full text-[7px] tracking-[0.3em] uppercase text-stone-300 italic">Recommended for deep work</div>
+          <p className="text-[8px] uppercase tracking-[0.4em] text-stone-300 font-bold text-white">Weekly Retreat</p>
+          <p className="text-2xl font-serif italic text-white font-medium">from 1000€ <span className="text-[10px] opacity-80 not-italic">/ week</span></p>
         </div>
 
         <div className="hidden md:block w-px h-10 bg-white/5"></div>
 
         <div className="text-center md:text-right space-y-2">
-          <p className="text-[8px] uppercase tracking-[0.4em] text-stone-400 font-bold">Monthly Sanctuary</p>
-          <p className="text-2xl font-serif italic text-stone-200">from 2000€ <span className="text-[10px] opacity-60 not-italic">/ month</span></p>
+          <p className="text-[8px] uppercase tracking-[0.4em] text-stone-300 font-bold">Monthly Sanctuary</p>
+          <p className="text-2xl font-serif italic text-stone-200">from 2000€ <span className="text-[10px] opacity-80 not-italic">/ month</span></p>
         </div>
       </div>
     </div>
@@ -315,7 +358,7 @@ export default function Home() {
             prev2Label={null}
             next2Label={null}
           />
-          <div className="mt-8 flex justify-center gap-8 text-[9px] uppercase tracking-[0.3em] text-stone-400 font-bold">
+          <div className="mt-8 flex justify-center gap-8 text-[9px] uppercase tracking-[0.3em] text-stone-300 font-bold">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 bg-white/10 border border-white/20"></div>
               <span>Available</span>
@@ -332,23 +375,23 @@ export default function Home() {
     {/* C. INQUIRY FORM - Elegantný záver */}
     <div className="max-w-xl mx-auto space-y-16 pt-10">
       <div className="text-center space-y-4">
-        <h3 className="text-[10px] tracking-[0.6em] uppercase text-stone-400 font-bold">Booking Inquiry</h3>
+        <h3 className="text-[10px] tracking-[0.6em] uppercase text-stone-300 font-bold">Booking Inquiry</h3>
         <p className="text-xl font-serif italic text-stone-300 opacity-80">"Check the dates above and let us know your plans."</p>
       </div>
 
       <form action="https://formspree.io/f/xvzwpypp" method="POST" className="space-y-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           <div className="space-y-2">
-            <label htmlFor="name" className="text-[8px] uppercase tracking-widest text-stone-400 font-bold">Full Name</label>
+            <label htmlFor="name" className="text-[8px] uppercase tracking-widest text-stone-300 font-bold">Full Name</label>
             <input id="name" type="text" name="name" required className="w-full bg-transparent border-b border-white/10 py-3 focus:border-white/40 outline-none transition-all text-stone-200 text-sm" />
           </div>
           <div className="space-y-2">
-            <label htmlFor="email" className="text-[8px] uppercase tracking-widest text-stone-400 font-bold">Email Address</label>
+            <label htmlFor="email" className="text-[8px] uppercase tracking-widest text-stone-300 font-bold">Email Address</label>
             <input id="email" type="email" name="email" required className="w-full bg-transparent border-b border-white/10 py-3 focus:border-white/40 outline-none transition-all text-stone-200 text-sm" />
           </div>
         </div>
         <div className="space-y-2">
-          <label htmlFor="message" className="text-[8px] uppercase tracking-widest text-stone-400 font-bold">Your Preferred Dates & Notes</label>
+          <label htmlFor="message" className="text-[8px] uppercase tracking-widest text-stone-300 font-bold">Your Preferred Dates & Notes</label>
           <textarea id="message" name="message" rows={3} placeholder="E.g. I am looking for a quiet workspace from June 1st..." className="w-full bg-transparent border-b border-white/10 py-3 focus:border-white/40 outline-none transition-all text-stone-200 resize-none text-sm"></textarea>
         </div>
         <button type="submit" className="w-full py-6 border border-white/10 hover:bg-white hover:text-black transition-all duration-700 uppercase text-[10px] tracking-[0.5em] font-bold text-white">
@@ -378,12 +421,12 @@ export default function Home() {
             </div>
             <div className="flex gap-4 items-center pt-6 border-t border-white/10 text-white">
               <div className="flex flex-col w-full text-white">
-                <p className="text-[9px] text-stone-400 uppercase tracking-[0.3em] font-bold text-white">Cognitive Development</p>
+                <p className="text-[9px] text-stone-300 uppercase tracking-[0.3em] font-bold text-white">Cognitive Development</p>
                 <div className="flex items-center gap-4 mt-2">
                   <div className="flex-1 h-[1px] bg-stone-900 relative">
                     <div className="absolute top-0 left-0 h-full bg-stone-500 w-[70%] shadow-[0_0_10px_rgba(168,162,158,0.5)]"></div>
                   </div>
-                  <span className="text-[8px] text-stone-400 italic tracking-wider uppercase opacity-80">Processing memories...</span>
+                  <span className="text-[8px] text-stone-300 italic tracking-wider uppercase opacity-80">Processing memories...</span>
                 </div>
               </div>
             </div>
@@ -401,7 +444,7 @@ export default function Home() {
         
         {/* LOCATION & ADDRESS */}
         <div className="mb-12 space-y-3">
-          <p className="text-[10px] tracking-[0.4em] uppercase text-stone-400 font-bold">Location</p>
+          <p className="text-[10px] tracking-[0.4em] uppercase text-stone-300 font-bold">Location</p>
           <p className="text-sm font-serif italic text-stone-300">Banská Štiavnica, Slovakia</p>
           <a 
             href="https://maps.google.com/?q=Villa+Lucia+Banska+Stiavnica" 
@@ -426,7 +469,7 @@ export default function Home() {
            </a>
         </div>
 
-        <p className="text-[8px] tracking-[1em] uppercase opacity-60 text-white font-bold">
+        <p className="text-[8px] tracking-[1em] uppercase opacity-80 text-white font-bold">
           Villa Lucia • Forest Residence • 2026
         </p>
       </footer>
