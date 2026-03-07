@@ -467,20 +467,37 @@ export default function Home() {
           </a>
         </div>
 
-        {/* SOCIAL & REVIEW LINKS */}
+       {/* SOCIAL & REVIEW LINKS */}
         <div className="flex flex-wrap justify-center gap-10 mb-10 opacity-80">
-           <a href="https://wa.me/421907536490" target="_blank" rel="noopener noreferrer" className="text-[9px] uppercase tracking-widest text-white hover:opacity-100 transition-opacity font-bold">
-             WhatsApp
-           </a>
-           <a href="https://instagram.com/villaluciastiavnica" target="_blank" rel="noopener noreferrer" className="text-[9px] uppercase tracking-widest text-white hover:opacity-100 transition-opacity font-bold">
-             Instagram
-           </a>
-           <a href="https://share.google/TjiOzvmrSgg0uEJzE" target="_blank" rel="noopener noreferrer" className="text-[9px] uppercase tracking-widest text-white hover:opacity-100 transition-opacity font-bold">
-             Google Reviews
-           </a>
+          <a href="https://wa.me/421907536490" target="_blank" rel="noopener noreferrer" className="text-[9px] uppercase tracking-widest text-white hover:opacity-100 transition-opacity font-bold">
+            WhatsApp
+          </a>
+          <a href="https://t.me/lucia_malickova" target="_blank" rel="noopener noreferrer" className="text-[9px] uppercase tracking-widest text-white hover:opacity-100 transition-opacity font-bold">
+            Telegram
+          </a>
+          <a href="https://instagram.com/villaluciastiavnica" target="_blank" rel="noopener noreferrer" className="text-[9px] uppercase tracking-widest text-white hover:opacity-100 transition-opacity font-bold">
+            Instagram
+          </a>
+          <a href="https://share.google/TjiOzvmrSgg0uEJzE" target="_blank" rel="noopener noreferrer" className="text-[9px] uppercase tracking-widest text-white hover:opacity-100 transition-opacity font-bold">
+            Google Reviews
+          </a>
         </div>
 
-        <p className="text-[8px] tracking-[1em] uppercase opacity-80 text-white font-bold">
+        {/* CRYPTO & NOMAD SECTION */}
+        <div className="mt-8 pt-8 border-t border-white/5 flex flex-col items-center gap-4 mb-12">
+          <p className="text-[10px] tracking-[0.2em] uppercase text-stone-500 font-medium">Digital Nomad Friendly</p>
+          <div className="flex items-center gap-4 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
+            <span className="text-[11px] font-serif italic text-stone-300">Payments accepted in</span>
+            <div className="flex gap-3 items-center">
+               {/* Bitcoin */}
+               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-stone-400"><path d="M23.638 14.904c-1.602 6.43-8.113 10.34-14.542 8.736C2.67 22.05-1.244 15.556.358 9.105 1.956 2.68 8.462-1.23 14.89.373c6.433 1.602 10.347 8.116 8.748 14.531zm-5.84-6.315c.312-2.093-1.277-3.217-3.45-3.97l.705-2.827-1.72-.43-.686 2.753c-.452-.113-.916-.22-1.372-.325l.693-2.775-1.72-.43-.705 2.827c-.375-.085-.742-.16-1.093-.242l.002-.01-2.372-.592-.458 1.838s1.277.293 1.248.311c.698.174.826.638.805 1.006l-.806 3.235c.048.012.11.03.18.057l-.18-.045-1.13 4.532c-.086.21-.303.525-.792.404.017.024-1.248-.311-1.248-.311l-.854 1.97 2.238.557c.416.104.822.212 1.218.31l-.715 2.87 1.718.43.705-2.826c.47.128.924.247 1.366.36l-.703 2.824 1.72.43.713-2.86c2.934.557 5.145.333 6.075-2.322.75-2.128-.037-3.356-1.577-4.155 1.12-.26 1.964-1.0 2.19-2.527zm-3.936 5.526c-.532 2.136-4.127.982-5.293.69l.944-3.79c1.166.29 4.914.86 4.349 3.1zm.53-5.565c-.485 1.944-3.478.957-4.448.715l.855-3.432c.97.242 4.102.696 3.593 2.717z"/></svg>
+               {/* Ethereum */}
+               <svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor" className="text-stone-400"><path d="M15.927 23.84l-8.331-4.918 8.331 12.093 8.333-12.093-8.333 4.918zM16.075 0l-8.478 14.091 8.478 4.992 8.48-4.992-8.48-14.091zM15.927 21.314l8.333-4.918-8.333-3.784-8.331 3.784 8.331 4.918z"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <p className="text-[8px] tracking-[1em] uppercase opacity-80 text-white font-bold text-center">
           Villa Lucia • Forest Residence • 2026
         </p>
       </footer>
