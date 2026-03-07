@@ -272,11 +272,12 @@ export default function Home() {
       {/* 6. GAZEBO */}
       <section className="py-32 px-6">
         <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-12 items-center text-white">
-          {/* ZMENA: h-[50vh] pre mobil, h-[80vh] pre desktop */}
-          <div className="md:col-span-8 relative h-[50vh] md:h-[80vh] shadow-2xl bg-stone-900">
+          {/* ZMENA: aspect-[4/3] pre mobil (zobrazí celú fotku), min-w-0 (zabráni roztiahnutiu) */}
+          <div className="md:col-span-8 relative aspect-[4/3] md:aspect-auto md:h-[80vh] shadow-2xl bg-stone-900 w-full min-w-0">
             <Image src="/outdoor/fireplace_outdoor.jpg" alt="Gazebo" fill className="object-cover rounded-sm" sizes="(max-width: 768px) 100vw, 66vw" />
           </div>
-          <div className="md:col-span-4 space-y-8">
+          {/* ZMENA: min-w-0 pre textový kontajner (kľúčové pre opravu orezaného textu a scrollovania) */}
+          <div className="md:col-span-4 space-y-8 min-w-0">
             {/* PRIDANÉ: [text-wrap:balance] pre krajšie zalomenie nadpisu */}
             <h2 className="text-5xl font-serif italic leading-tight [text-wrap:balance]">Heated <br /> Cinematic Gazebo</h2>
             <p className="text-stone-400 italic leading-relaxed mt-6">
