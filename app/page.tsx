@@ -115,9 +115,10 @@ export default function Home() {
               muted
               loop
               playsInline
+              preload="auto"
               className="absolute inset-0 w-full h-full object-cover brightness-75"
             />
-            <div className="absolute top-10 left-10 flex flex-col gap-2">
+            <div className="absolute top-4 left-4 flex flex-row gap-2">
               <span className="px-3 py-1 bg-black/40 backdrop-blur-md border border-white/10 text-[9px] tracking-widest uppercase text-white">Dedicated Fiber Internet</span>
               <span className="px-3 py-1 bg-black/40 backdrop-blur-md border border-white/10 text-[9px] tracking-widest uppercase text-white">Smart Home Ecosystem</span>
             </div>
@@ -174,7 +175,7 @@ export default function Home() {
 </p>
           </div>
           <Gallery className="flex gap-6 overflow-x-auto snap-x no-scrollbar pb-10">
-            {["master_bedroom", "master_bed", "master_bedroom_bed", "master_bathroom", "master_shower"].map((img) => (
+            {["master_suite_2", "master_bedroom", "master_bed", "master_bedroom_bed", "master_bathroom", "master_shower"].map((img) => (
               <div key={img} className="relative h-[75vh] min-w-[85vw] md:min-w-[50vw] snap-center shadow-2xl bg-stone-900">
                 <Image src={`/master-sanctuary/${img}.jpg`} alt={img} fill className="object-cover rounded-sm" sizes="(max-width: 768px) 85vw, 50vw" />
               </div>
@@ -217,7 +218,7 @@ export default function Home() {
 
           {/* PRAVA STRANA: Galéria 5 fotiek (Už bez textov, čistá) */}
           <Gallery className="flex gap-4 overflow-x-auto md:grid md:grid-cols-2 snap-x no-scrollbar" desktopArrows={false}>
-             {["pink_bedroom", "gold_bedroom", "bath_tub", "bathroom_heritage", "bathroom_floor"].map((img) => (
+             {["heritage_room_1", "heritage_room_2", "heritage_room_3", "heritage_room_4", "pink_bedroom", "gold_bedroom", "bath_tub", "bathroom_heritage", "bathroom_floor"].map((img) => (
                <div key={img} className="relative h-[60vh] min-w-[70vw] md:min-w-0 snap-center shadow-lg">
                  <Image src={`/heritage_collection/${img}.jpg`} alt={img} fill className="object-cover rounded-sm" sizes="(max-width: 768px) 70vw, 50vw" />
                </div>
@@ -250,7 +251,10 @@ export default function Home() {
     <Gallery className="flex gap-4 overflow-x-auto snap-x no-scrollbar pb-10 text-black" arrowColor="black">
       {[
           // --- Fotky Obývačky (Viac fotiek!) ---
-       "/living/living_hall",
+       "/living/living_new_1",
+        "/living/living_new_2",
+        "/living/living_new_3",
+        "/living/living_hall",
         "/living/living_fireplace",
         "/living/mirror",
         "/living/living_place",
