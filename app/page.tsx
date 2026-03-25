@@ -217,9 +217,9 @@ export default function Home() {
           </div>
 
           {/* PRAVA STRANA: Galéria 5 fotiek (Už bez textov, čistá) */}
-          <Gallery className="flex gap-4 overflow-x-auto md:grid md:grid-cols-2 snap-x no-scrollbar" desktopArrows={false}>
+          <Gallery className="flex gap-4 overflow-x-auto snap-x no-scrollbar">
              {["heritage_room_1", "heritage_room_2", "heritage_room_3", "heritage_room_4", "pink_bedroom", "gold_bedroom", "bath_tub", "bathroom_heritage", "bathroom_floor"].map((img) => (
-               <div key={img} className="relative h-[60vh] min-w-[70vw] md:min-w-0 snap-center shadow-lg">
+               <div key={img} className="relative h-[60vh] min-w-[70vw] md:min-w-[40vw] snap-center shadow-lg shrink-0">
                  <Image src={`/heritage_collection/${img}.jpg`} alt={img} fill className="object-cover rounded-sm" sizes="(max-width: 768px) 70vw, 50vw" />
                </div>
              ))}
@@ -317,7 +317,7 @@ export default function Home() {
         src="/villa.jpg" 
         alt="Villa Lucia Exterior" 
         fill 
-        className="object-cover brightness-90"
+        className="object-contain brightness-90"
         sizes="100vw" 
       />
       <div className="absolute bottom-10 left-10">
