@@ -82,7 +82,7 @@ export default function Home() {
 
   const tileClassName = ({ date, view }: { date: Date, view: string }) => {
     if (view === 'month') {
-      const dateString = date.toISOString().split('T')[0];
+      const dateString = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
       if (data.bookedDates.includes(dateString)) {
         return 'booked-day'; 
       }
