@@ -109,14 +109,13 @@ export default function Home() {
       <section className="relative h-screen flex items-center justify-center px-6">
         <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-12 gap-8 items-center text-white">
           <div className="md:col-span-8 relative aspect-[4/3] md:h-[80vh] overflow-hidden rounded-sm shadow-2xl bg-stone-900">
-            <Image 
-              src="/stiavnica_view.jpg" 
-              alt="UNESCO View" 
-              fill 
-              priority 
-              fetchPriority="high"
-              sizes="(max-width: 768px) 100vw, 66vw"
-              className="object-cover brightness-75 transition-transform duration-[5000ms] hover:scale-105 text-white"
+            <video
+              src="/hero.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover brightness-75"
             />
             <div className="absolute top-10 left-10 flex flex-col gap-2">
               <span className="px-3 py-1 bg-black/40 backdrop-blur-md border border-white/10 text-[9px] tracking-widest uppercase text-white">Dedicated Fiber Internet</span>
@@ -290,7 +289,7 @@ export default function Home() {
   "Imagine a winter night. A crackling fire in the outdoor stone fireplace, lounging on a medieval heated bench, while a movie plays on the projection screen. 60m² of pure bliss for long dinners or karaoke nights with our JBL setup."
 </p>
             <Gallery className="flex gap-4 overflow-x-auto snap-x no-scrollbar pb-2">
-              {["dining_outdoor", "view_gazebo", "gazebo", "grill"].map((img) => (
+              {["family_cinema", "grill_night", "couple_fireplace", "dining_outdoor", "view_gazebo", "gazebo", "grill"].map((img) => (
                 <div key={img} className="relative h-48 min-w-[150px] snap-center shrink-0">
                   <Image 
                     src={`/outdoor/${img}.jpg`} 
